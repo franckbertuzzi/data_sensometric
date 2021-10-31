@@ -4,14 +4,14 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: 'Sensometric Data Blog' # Website name
-baseurl: 'www.data.sensometric.com' # Website URL
+baseurl: '' # Website URL
 copyright: '2021 - All rights reserved - sensometric.com # Footer text, e.g. '© {year} Me' 
 
 ############################
 ## LANGUAGE
 ############################
 
-defaultContentLanguage: fr
+defaultContentLanguage: en
 hasCJKLanguage: false
 defaultContentLanguageInSubdir: false
 removePathAccents: true
