@@ -1,0 +1,3 @@
+[submodule "usageo"]
+	path = usageo
+	url = https://github.com/franckbertuzzi/usageo.git

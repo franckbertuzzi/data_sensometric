@@ -1,0 +1,47 @@
+---
+title: Afficher un objet
+author: ''
+date: '2021-08-19'
+slug: Afficher un objet
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-19T11:55:22+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 2
+---
+
+
+## Afficher un objet 
+Il est très simple d'afficher un objet. La méthode la plus rapide est tout simplement de taper le nom de l'objet et d'exécuter la commande.
+
+### Nom de l'objet
+```{r}
+y <- "Chaîne de caractère"
+y
+```
+<hr>
+
+### Fonction print()
+Le seconde solution est l'utilisation de la fonction print()
+```{r}
+y <- 45.569
+print(y)
+```
+<hr>
+
+### Supprimer un objet
+Pour supprimer un objet, nous utilisons la fonction rm(). Le moyen memo technique est de se souvenir du mot remove (supprimer). Ici, nous allons supprimer l'objet (b)
+
+```{r}
+rm(b)
+```

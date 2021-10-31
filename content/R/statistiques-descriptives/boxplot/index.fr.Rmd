@@ -1,0 +1,122 @@
+---
+title: Boxplot
+author: ''
+date: '2021-08-20'
+slug: boxplot
+categories:
+  - R
+tags:
+  - Statistiques descriptives
+  - plot
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T12:44:02+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 1
+---
+
+## Les boxplots
+
+Les boxplots sont des outils de visualisation très pratiques pour observer et comparer des distributions. 
+
+### Fonctionnement d'un boxplot
+
+![](images/boxplot.png)
+
+<br>
+<hr>
+<br>
+ 
+### Créer des boxplots | fonction boxplot()
+Pour commencer, nous allons créer une série de boxplot avec le jeu de donnée iris.
+
+
+```{r}
+
+# Visualisation partielle du jeu de données
+head(iris)
+
+# Fonction boxplot
+boxplot(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length, iris$Petal.Width)
+
+```
+
+
+<br>
+<hr>
+<br>
+
+
+### Créer des boxplots avec ggplot()
+#### Les réglages
+
+Maintenant, nous allons utiliser ggplot. Cette librairie offre de nombreux réglages et fonctionne avec un système de calques.
+
++ aes() permet de définir les aspects esthétiques (x et y principalement, mais aussi color, fill, size, …)
+
++ geom_xxx() indique la représentation à choisir (xxx étant remplacé par histogram, boxplot, …)
+    
++ stat_xxx() indique les transformations statistiques à utiliser, si besoin
+
++ scale_xxx() s’emploie pour des changements d’échelle
+
++ coord_xxx() s’utilise pour des modifications de systèmes de coordonnées
+    
++ facet_grid() découpe les données (et donc le graphique) en plusieurs facettes selon les variables fournie dans la formule
+    
++ theme_xxx(), labs(), xlab(), ylab(), ggtitle(), … pour des améliorations du graphique (annotation, couleurs, …)
+
+
+```{r}
+
+# Library(ggplot2)
+library(ggplot2)
+
+# Visualisation partielle du jeu de données
+head(iris)
+
+# Fonction geom_boxplot + geom_jitter 
+ggplot(data=iris, mapping = aes(Sepal.Length, Species) +
+  geom_boxplot(colour = "blue") +
+  geom_jitter(colour="blue")
+
+```
+
+<br>
+<hr>
+<br>
+
+### Séries de boxplots | ggplot()
+Cet exemple est tiré d'une étude sensorielle concernant des parfums. Nous souhaitons comparer la distribution des évaluations sensorielles des parfums concernant un attribut : Spicy. 
+Nous ajoutons également la fonction jitter permettant d'afficher les valeurs par des points.
+
+
+```{r}
+
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+demo_experts=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Visualisation partielle du jeu de données
+head(demo_experts)
+
+# Fonction geom_boxplot + geom_jitter
+ggplot(data=demo_experts, mapping = aes(x=Spicy, y=Product)) +
+  geom_boxplot() +
+  geom_jitter(colour="blue")
+
+```
+
+<br>
+<hr>
+<br>
+

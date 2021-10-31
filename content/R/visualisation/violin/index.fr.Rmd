@@ -1,0 +1,62 @@
+---
+title: Violin
+author: ''
+date: '2021-08-22'
+slug: violin
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-22T20:48:46+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type : book
+---
+
+## Visualisation avec violin
+### 1. Jeu de données
+
+Nous utilisons nos propres jeux de données. Ici, nous utilisons le jeu de données “usageo_car”, téléchargeable en bas de page. C’est un exemple qui regroupe des données sensorielles concernant des tests automobiles. Les testeurs ont essayé 3 modèles de véhicules, assez différents. Ils ont eu à juger le comportement du véhicule ainsi que son confort vertical. Le jeu de données comporte 150 unités statistiques, avec 4 variables dont 2 qualitatives et 2 quantitatives.
+
+### 2. Package
+Nous utilisons ggplot2() pour ce tutoriel. Vous devez donc installer le package et lancer la librairie : install.packages(ggplot2), puis library(ggplot2)
+
+La librairie gglot2() fonctionne avec un sytème de calques. Cela permet de superposer des fonctions. GGplot2() offre également de nombreux réglages, permettant de customiser la visualisation de vos données dans les moindres détails.
+
+<hr>
+
+## Fonction geom_violin
+Dans cet exemple, nous allons comparer les résultats des tests concernant la perception du confort vertical des différents véhicules. 
+
+```{r warning=FALSE, paged.print=TRUE}
+
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Créer le violin + ajout d'un calque avec la fonction geom_jitter
+ggplot(data=usageo_car) +
+  geom_violin(mapping = aes(Product, Comfort)) +
+  geom_jitter(mapping = aes(Product, Comfort), position = position_jitter(0.1))
+
+
+# Ajout du réglage fill qui permet de colorer chaque groupe (ici, les marques de véhicules)
+
+ggplot(data=usageo_car) +
+  geom_violin(mapping = aes(Product, Comfort, fill=Product)) +
+  geom_jitter(mapping = aes(Product, Comfort), position = position_jitter(0.1))
+
+
+```
+
+
+
+ 

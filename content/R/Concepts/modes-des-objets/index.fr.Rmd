@@ -1,0 +1,89 @@
+---
+title: Modes des objets
+author: ''
+date: '2021-08-19'
+slug: modes-des-objets
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-19T12:04:11+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 3
+---
+
+## Les différents modes
+Les objets sont variés. Par conséquent, leurs modes sont différents. Il existe 5 modes.
+
+### 1. Character
+Les objets de type **Character** sont constitués tout simplement de chaîne de caractères. Nous utilisons des guillemets simples ou doubles autour de la chaîne de caractères.
+
+```{r}
+texte <- "Je suis une chaîne de caractères"
+print(texte)
+```
+
+<hr>
+
+### 2. Numeric
+Comme le nom l'évoque, les objets de mode **numéric** sont constitués de nombres. Contrairement aux caractères, il n'est pas nécessaire d'utiliser "" ou '' autour de la valeur de l'objet.
+```{r}
+nombre <- 12
+print(nombre)
+```
+<hr>
+
+### 3. Complex
+Les objets de mode **complex** sont des nombres complexes. Comme pour **les numeric**, il n'est pas nécessaire d'employer les guillemets. 
+
+```{r}
+z <- 2i + 3
+print(z)
+is.complex(z)
+```
+<hr>
+
+### 3. NULL
+Le mode NULL indique un objet vide.
+```{r}
+dark <- NULL
+dark
+```
+<hr>
+
+### 5. Logical
+Les objets de mode **logical** prennent des valeurs booléennes de type "true" ou "false". Pour l'exemple, nous utilisons une fonction permettant d'interroger le mode d'un objet. La réponse sera de type booléenne. Nous demandons si l'objet "a" est de mode "numéric" ou de mode "character". Pour le mode "numeric", la réponse est "TRUE", alors que pour le mode "character", la réponse est "FALSE".
+
+```{r}
+a <- 785
+is.numeric(a)
+is.character(a)
+```
+<hr>
+<br>
+
+
+## Connaître le mode d'un objet
+Comme nous venons de la voir, les objets peuvent être crées sous de multiples formes. Pour exécuter certaines fonctions, il est parfois important de connaître le mode de l'objet. 
+
+### 1. La fonction mode ()
+```{r}
+objet <- "Je suis une chaîne de caractères"
+mode(objet)
+```
+<hr>
+
+### 2. La fonction is.numeric()
+Nous pouvons également utiliser la fonction is.""(). Cette fonction est une forme interrogative et le programme nous retourne une réponse booléene : "true", "false"
+```{r}
+is.character(objet)
+```
+

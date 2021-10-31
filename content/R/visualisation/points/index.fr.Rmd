@@ -1,0 +1,154 @@
+---
+title: Points
+author: ''
+date: '2021-08-21'
+slug: points
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-21T16:19:43+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type : book
+weight : 1
+---
+
+## Visualisation de données 
+### 1. Jeu de données
+
+Nous utilisons nos propres jeux de données. Ici, nous utilisons le jeu de données "usageo_car", téléchargeable en bas de page. C'est un exemple qui regroupe des données sensorielles concernant des tests automobiles. Les testeurs ont essayé 3 modèles de véhicules, assez différents. Ils ont eu à juger le comportement du véhicule ainsi que son confort vertical. Le jeu de données comporte 150 unités statistiques, avec 4 variables dont 2 qualitatives et 2 quantitatives.
+
+### 2. Package
+Nous utilisons ggplot2() pour ce tutoriel. Vous devez donc installer le package et lancer la librairie : **install.packages(ggplot2)**, puis **library(ggplot2)**
+
+gglot2() fonctionne avec un sytème de calques. Cela permet de superposer des fonctions. GGplot2() offre également de nombreux réglages, permettant de customiser la visualisation de vos données dans les moindres détails.
+
+<br>
+<hr>
+<br>
+
+
+## Nuage de points 1 dimension
+Les nuage de points "stripchart" sont particulièrement bien adaptés sur de petites tailles d'échantillons. Il s'utilise grâce à la fonction jitter_point()
+
+Pour notre exemple, nous souhaitons connaître le produit le mieux perçu. Quel véhicule est jugé le plus confortable ? Quel véhicule semble plus rigoureux sur le plan du comportement routier ? 
+
+### Fonction jitter_point
+Cette fonction permet l'affichage sous forme de nuage de points, ou dit scatterplot.
+
+```{r warning=FALSE, paged.print=TRUE}
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Visualisation partielle du jeu de données
+head(usageo_car)
+
+# Création des points avec la fonction geom_jitter
+ggplot(data=usageo_car) +
+  geom_jitter(mapping = aes(Product, Comfort))
+
+```
+
+<br>
+<hr>
+<br>
+
+### Dispersion des points et couleur
+ 
+Dans cet exemple, nous observons que les points sont espacés. Pour un meilleur rendu visuel, nous pouvons utiliser le réglage de position qui agit sur le degrés de dispersion des points. Nous allons également changer la couleur et la remplacer par du bleu via la commande "color".
+
+```{r}
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Réglage de position avec position_jitter
+ggplot(data=usageo_car) +
+  geom_jitter(mapping = aes(Product, Comfort), position = position_jitter(0.1), color = "blue")
+
+```
+
+<br>
+<hr>
+<br>
+
+### Intervertir les axes
+Lors de l'étude de certains produits, il peut être utile d'intervertir les axes. Dans l'exemple suivant, nous allons déplacer les produits sur l'axe des Y, et déplacer l'attribut de produit jugé sur l'axe des X. Nous utilisons la fonction coord_flip()
+
+```{r}
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Fonction coord_flip
+ggplot(data=usageo_car) +
+  geom_jitter(mapping = aes(Product, Comfort), position = position_jitter(0.1), color = "blue") +
+  coord_flip()
+```
+
+
+Cet exemple nous permet de visualiser des différences entre les 3 véhicules. Sur le plan du confort vertical, le véhicule Ferrari semble en retrait. A l'inverse, le véhicule Fiat semble offrir la meilleure prestation au client lors de la journée de test.
+
+<br>
+<hr>
+<br>
+
+
+## Affichage 2 dimensions + variables catégorielles 
+### Fonction color
+
+Dans cet exemple nous allons afficher nos 2 variables quantitatives et utiliser la fonction color() pour repérer les marques de produits par des couleurs.
+
+```{r}
+
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Rajout de la fonction color
+ggplot(data=usageo_car) +
+  geom_jitter(mapping = aes(Behavior, Comfort, color = Product))
+
+```
+
+<br>
+<hr>
+<br>
+
+### Fonction facets
+Une autre méthode, particulièrement utile pour les variables catégorielles, consiste à diviser le graphique en facettes. Ce sont des sous-parcelles qui affichent chacune un sous-ensemble de données. Cela est particulièrement pratique lorsqu'il y a de nombreuses variables. Nous allons utiliser la fonction facet_wrap()
+
+```{r}
+# Library(ggplot2)
+library(ggplot2)
+
+# Data import
+usageo_car=read.csv(file.choose(), sep=",",dec=".",quote="\"", header=TRUE)
+
+# Fonction wrap
+ggplot(data = usageo_car) + 
+  geom_jitter(mapping = aes(x = Comfort, y = Behavior)) + 
+  facet_wrap(~ Product, nrow = 2)
+```
+
+<br>
+<hr>
+<br>
+
+

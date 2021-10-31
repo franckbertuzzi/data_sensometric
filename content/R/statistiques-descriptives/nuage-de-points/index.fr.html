@@ -1,0 +1,111 @@
+---
+title: Nuage de points
+author: Franck BERTUZZI
+date: '2021-08-20'
+slug: nuage de points
+categories:
+  - R
+tags:
+  - statistiques descriptives
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T09:55:00+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 2
+---
+
+<script src="{{< blogdown/postref >}}index.fr_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="créer-un-nuage-de-points-fonction-plot" class="section level2">
+<h2>Créer un nuage de points | Fonction plot</h2>
+<p>La fonction plot est une fonction générique de R. Elle permet de représenter de nombreux types de données, comme les nuages de points. Nous utilisons ici le jeu de données iris fourni avec le logiciel R. La fonction head() permet de visualiser l’entête du jeu de données et les premières lignes.</p>
+<pre class="r"><code># Création d&#39;un jeu de données appellé data
+data &lt;- iris
+
+# Visualiation partielle du jeu de données
+head(data)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Fontion plot
+plot(data$Sepal.Length, data$Petal.Length)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<br>
+<hr>
+<p><br></p>
+<div id="droite-de-regression-fonction-lm-et-abline" class="section level3">
+<h3>Droite de regression : fonction lm() et abline()</h3>
+<p>lm signifie linear model. Voyons ici comment utiliser cette fonction et comment tracer une droite de régression. Nous allons utilisr le jeu de données iris</p>
+<pre class="r"><code># Dataset : iris
+# Fonction plot
+plot(iris$Sepal.Length, iris$Petal.Length)
+
+# Fonction lm()
+regression &lt;-lm(iris$Petal.Length ~ iris$Sepal.Length, data = iris)
+
+# Fonction abline()
+abline(regression)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># Affichage de l&#39;objet &quot;regression&quot;
+print(regression)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = iris$Petal.Length ~ iris$Sepal.Length, data = iris)
+## 
+## Coefficients:
+##       (Intercept)  iris$Sepal.Length  
+##            -7.101              1.858</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="nuage-de-points-avec-ggplot" class="section level3">
+<h3>Nuage de points avec ggplot</h3>
+<p>ggplot est un package permettant de proposer des fonctionnalités plus avançées et des graphismes plus agréables. Il fonctionne avec un système de calques. Pour cela, assurez vous de télécharger le package ggplot2 via la fonction install.packages(ggplot2), puis de lancer le package via la commande library(ggplot2).</p>
+<pre class="r"><code># install.packages(ggplot2)
+# library(ggplot2)
+# dataset : iris
+
+library(ggplot2)</code></pre>
+<pre><code>## Warning: le package &#39;ggplot2&#39; a été compilé avec la version R 4.0.5</code></pre>
+<pre class="r"><code>ggplot(data = iris, mapping = aes(Sepal.Length, Petal.Length)) +
+  geom_point() </code></pre>
+<img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="colorer-les-variables-qualitatives" class="section level3">
+<h3>Colorer les variables qualitatives</h3>
+<p>Nous souhaitons maintenant colorer les variables qualitatives afin d’augmenter la clareté et l’interprétation de graphique. Pour cela nous utilisons l’argument “color” et l"assignons à la variable souhaitée.</p>
+<pre class="r"><code># Dataset : iris
+# Library
+library(ggplot2)
+
+# Visualisation partielle du jeu de données
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Fonction geom_point + réglage couleur &quot;color&quot;
+ggplot(data = iris) + 
+  geom_point(mapping = aes(x = Sepal.Length, y = Petal.Length, color=Species))</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>

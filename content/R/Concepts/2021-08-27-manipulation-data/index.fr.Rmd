@@ -1,0 +1,150 @@
+---
+title: Manipulation jeu de données
+author: ''
+date: '2021-08-27'
+slug: manipulation-data
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-27T13:38:06+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type : book
+share : yes
+---
+
+## Manipuler les données
+Ce chapitre recouvre les principales commandes pour manipuler les données. Nous y retrouvons les fonctions principales comme afficher, trier, sélectionner ou filtrer. Le jeu de données est "iris", qui est un des jeux de données proposé nativement par le logiciel R.
+
+### Obtenir le nom des différentes variables avec names()
+Pour de nombreuses raisons, il est utile de visualiser rapidement le nom des différentes variables constituant le jeu de données.
+
+
+```{r}
+
+names(iris)
+
+```
+
+<br>
+<hr>
+<br>
+
+### Afficher les données avec la fonction head()
+La fonction head() est très pratique pour visualiser rapidement le jeu de données et ses libellés. Par défaut, la fonction head() affiche 6 premières lignes dont les libellés. Il est possible de rajouter le nombre de lignes souhaitées.
+
+```{r}
+
+# dataset = iris
+
+# Fonction head()
+head(iris)
+
+# Fonction head() + rajout du nombre de lignes
+head(iris, 15)
+
+```
+
+<br>
+<hr>
+<br>
+
+### Fonction summary()
+A noter que nous pouvons avoir une vision complète du jeu de données avec la fonction summary() qui propose également quelques statistiques descriptives.
+
+```{r}
+
+summary(iris)
+
+```
+<br>
+<hr>
+<br>
+
+### Sélectionner une variable avec $()
+Le symbole $ permet de sélectionner une variable du jeu de données. Par exemple, nous souhaitons afficher la variable "Sepal.Length" du jeu de données iris
+
+```{r}
+
+# Fonction $() et fonction head()
+head(iris$Sepal.Length, 20)
+
+```
+
+<br>
+<hr>
+<br>
+
+### Sélection et affichage d'unités statistiques 
+Découvrons maintenant les principales fonctions permettant d'afficher certaines unités statistiques du jeu de données.
+
+```{r warning=FALSE}
+
+# Sélection d'une unité statistique (ligne 5)
+iris[5,] 
+
+# Sélection de plusieurs groupe d'unités statistiques (exemple : ligne de 5 à 10)
+iris[5:10,]
+
+# Sélection de plusieurs unités statistiques 
+iris[c(5, 15, 20, 33, 45),]
+
+
+```
+
+
+<br>
+<hr>
+<br>
+
+### Trier et extraire les variables avec la fonction subset()
+La commande subset() permet d'extraire les données d'un tableau selon ses conditions. Elle permet de trier les variables en fonction de plusieurs critères. Dans le second exemple, nous souhaitons les unités statistiques comprenant les longueurs de pétales supérieures à 7.2 mm, de l'espèce 'Seposa'
+
+```{r}
+
+# Fonction subset()
+subset(iris, iris$Sepal.Length > 7.2)
+
+# Autres exemples avec subset()
+subset(iris, iris$Sepal.Length > 7.2, Species = "seposa")
+
+
+```
+
+<br>
+<hr>
+<br>
+
+### Trier avec la fonction sort() 
+#### Ordre croissant et décroissant
+
+```{r}
+
+# Fonction sort()
+sort(iris$Sepal.Length)
+
+# Affichage barplot()
+c <- sort(iris$Sepal.Length)
+barplot(c)
+
+# Fonction sort() décroissante
+sort(iris$Sepal.Length, decreasing = T)
+d <- sort(iris$Sepal.Length, decreasing = T)
+
+# Affichage barplot()
+barplot(d)
+
+```
+
+<br>
+<hr>
+<br>
+
+

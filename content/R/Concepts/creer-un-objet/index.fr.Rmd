@@ -1,0 +1,85 @@
+---
+title: Créer un objet
+author: ''
+date: '2021-08-19'
+slug: créer-un-objet
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-19T11:15:37+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 1
+---
+
+Nous allons apprendre à créer, manipuler et afficher des objets. Pour créer un objet, rien de plus simple. Il existe plusieurs méthodes. Nous allons ici créer un objet (x) et lui donner une valeur numérique.
+
+<br>
+<hr>
+<br>
+
+### 1. Créer un objet avec le signe <-
+Dans cet exemple, l'objet (x) reçoit la valeur numérique de 12. A noter, que nous pouvons utiliser # pour insérer des commentaires ou des notes, sans que ces derniers ne soient interpréter comme du code.
+```{r echo=TRUE, message=TRUE, warning=TRUE, paged.print=TRUE}
+# Ceci est un commentaire. 
+## Il ne sera pas considéré comme du code à exécuter.
+x <- 12
+```
+
+
+<br>
+<hr>
+<br>
+
+### 2. Créer un objet avec le signe =
+Dans cet exemple, l'objet (x) prend la valeur numérique de 12
+```{r}
+x = 12
+```
+
+
+<br>
+<hr>
+<br>
+
+### 3. Créer un objet avec ->
+Dans cet exemple, (b) reçoit la valeur de (a). Initialement, la valeur numérique de (b) était 15. Après l'opération, (b) reçoit la valeur de (a) et prend la valeur 785.
+```{r}
+a <- 785
+b <- 15
+a -> b
+print(b)
+```
+
+
+<br>
+<hr>
+<br>
+
+### 4. Exemple d'objet et quelques opérations : Un vecteur
+Ici, nous allons créer un vecteur et additionner son contenu avec la fonction sum(), ou afficher la moyenne avec la fonction mean()
+
+```{r}
+
+# Création d'un vecteur
+mon_vecteur <- c(3,5,3,9,5,2)
+
+# Addiction
+sum(mon_vecteur)
+
+# Moyenne
+mean(mon_vecteur)
+
+```
+
+<br>
+<hr>
+<br>
+

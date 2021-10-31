@@ -1,0 +1,59 @@
+---
+title: Résumer des données
+author: ''
+date: '2021-08-20'
+slug: resumer des donnees
+categories:
+  - R
+tags: [Statistiques descriptives]
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T09:12:35+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 4
+---
+
+## Fonctions principales pour résumer les données
+Dans cet exemple, nous utilisons le jeu de données fourni par R : mtcars
+
+<hr>
+
+### Fonction head()
+Cette fonction permet de prendre connaissance des premières lignes du jeu de données et de son entête. 
+```{r}
+data <- mtcars
+head(data)
+```
+
+<hr>
+
+
+### Fonction summary()
+```{r}
+data <- mtcars
+summary(data)
+```
+
+<hr>
+
+### Utilisation de $
+Le signe $ permet de sectionner une colonne dans un jeu de données. Dans l'exemple suivant, nous souhaitons connaître la valeur la plus grande de la variable "mpg". Nous entrons la fonction max suivi du nom du jeu de données puis utilisons le symbole $ pour choisir la variable.
+
+```{r}
+max(data$mpg)
+```
+
+Il est bien sûr possible d'utiliser de multiples fonctions comme le min (minimum), le sd (écart type)... avec le même principe. Voyons pour l'écart type de la variable disp
+
+```{r}
+sd(data$disp)
+```
+
+

@@ -1,0 +1,26 @@
+---
+title: Importer
+author: ''
+date: '2021-08-20'
+slug: importer
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T08:27:19+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 10
+
+## Importer des données
+Avant de passer à l'analyse de données, il faut importer vos données.Nous allons rapidement balayer les principales fonctions pour importer vos jeux de données. Pour nos tutos, nous utilisons souvent les jeux de données fournis avec R. Dans ce cas, il suffit de taper une fonction avec le nom du jeu de données.
+
+### Article en cours d'actualisation... Merci de votre patience
+

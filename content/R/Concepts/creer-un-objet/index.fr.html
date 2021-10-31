@@ -1,0 +1,74 @@
+---
+title: Créer un objet
+author: ''
+date: '2021-08-19'
+slug: créer-un-objet
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-19T11:15:37+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 1
+---
+
+<script src="{{< blogdown/postref >}}index.fr_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Nous allons apprendre à créer, manipuler et afficher des objets. Pour créer un objet, rien de plus simple. Il existe plusieurs méthodes. Nous allons ici créer un objet (x) et lui donner une valeur numérique.</p>
+<br>
+<hr>
+<p><br></p>
+<div id="créer-un-objet-avec-le-signe--" class="section level3">
+<h3>1. Créer un objet avec le signe &lt;-</h3>
+<p>Dans cet exemple, l’objet (x) reçoit la valeur numérique de 12. A noter, que nous pouvons utiliser # pour insérer des commentaires ou des notes, sans que ces derniers ne soient interpréter comme du code.</p>
+<pre class="r"><code># Ceci est un commentaire. 
+## Il ne sera pas considéré comme du code à exécuter.
+x &lt;- 12</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="créer-un-objet-avec-le-signe" class="section level3">
+<h3>2. Créer un objet avec le signe =</h3>
+<p>Dans cet exemple, l’objet (x) prend la valeur numérique de 12</p>
+<pre class="r"><code>x = 12</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="créer-un-objet-avec--" class="section level3">
+<h3>3. Créer un objet avec -&gt;</h3>
+<p>Dans cet exemple, (b) reçoit la valeur de (a). Initialement, la valeur numérique de (b) était 15. Après l’opération, (b) reçoit la valeur de (a) et prend la valeur 785.</p>
+<pre class="r"><code>a &lt;- 785
+b &lt;- 15
+a -&gt; b
+print(b)</code></pre>
+<pre><code>## [1] 785</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="exemple-dobjet-et-quelques-opérations-un-vecteur" class="section level3">
+<h3>4. Exemple d’objet et quelques opérations : Un vecteur</h3>
+<p>Ici, nous allons créer un vecteur et additionner son contenu avec la fonction sum(), ou afficher la moyenne avec la fonction mean()</p>
+<pre class="r"><code># Création d&#39;un vecteur
+mon_vecteur &lt;- c(3,5,3,9,5,2)
+
+# Addiction
+sum(mon_vecteur)</code></pre>
+<pre><code>## [1] 27</code></pre>
+<pre class="r"><code># Moyenne
+mean(mon_vecteur)</code></pre>
+<pre><code>## [1] 4.5</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>

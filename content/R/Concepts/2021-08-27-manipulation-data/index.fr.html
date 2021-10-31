@@ -1,0 +1,204 @@
+---
+title: Manipulation jeu de données
+author: ''
+date: '2021-08-27'
+slug: manipulation-data
+categories:
+  - R
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-27T13:38:06+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type : book
+share : yes
+---
+
+<script src="{{< blogdown/postref >}}index.fr_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="manipuler-les-données" class="section level2">
+<h2>Manipuler les données</h2>
+<p>Ce chapitre recouvre les principales commandes pour manipuler les données. Nous y retrouvons les fonctions principales comme afficher, trier, sélectionner ou filtrer. Le jeu de données est “iris”, qui est un des jeux de données proposé nativement par le logiciel R.</p>
+<div id="obtenir-le-nom-des-différentes-variables-avec-names" class="section level3">
+<h3>Obtenir le nom des différentes variables avec names()</h3>
+<p>Pour de nombreuses raisons, il est utile de visualiser rapidement le nom des différentes variables constituant le jeu de données.</p>
+<pre class="r"><code>names(iris)</code></pre>
+<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="afficher-les-données-avec-la-fonction-head" class="section level3">
+<h3>Afficher les données avec la fonction head()</h3>
+<p>La fonction head() est très pratique pour visualiser rapidement le jeu de données et ses libellés. Par défaut, la fonction head() affiche 6 premières lignes dont les libellés. Il est possible de rajouter le nombre de lignes souhaitées.</p>
+<pre class="r"><code># dataset = iris
+
+# Fonction head()
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Fonction head() + rajout du nombre de lignes
+head(iris, 15)</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## 11          5.4         3.7          1.5         0.2  setosa
+## 12          4.8         3.4          1.6         0.2  setosa
+## 13          4.8         3.0          1.4         0.1  setosa
+## 14          4.3         3.0          1.1         0.1  setosa
+## 15          5.8         4.0          1.2         0.2  setosa</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="fonction-summary" class="section level3">
+<h3>Fonction summary()</h3>
+<p>A noter que nous pouvons avoir une vision complète du jeu de données avec la fonction summary() qui propose également quelques statistiques descriptives.</p>
+<pre class="r"><code>summary(iris)</code></pre>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="sélectionner-une-variable-avec" class="section level3">
+<h3>Sélectionner une variable avec $()</h3>
+<p>Le symbole $ permet de sélectionner une variable du jeu de données. Par exemple, nous souhaitons afficher la variable “Sepal.Length” du jeu de données iris</p>
+<pre class="r"><code># Fonction $() et fonction head()
+head(iris$Sepal.Length, 20)</code></pre>
+<pre><code>##  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1 5.7
+## [20] 5.1</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="sélection-et-affichage-dunités-statistiques" class="section level3">
+<h3>Sélection et affichage d’unités statistiques</h3>
+<p>Découvrons maintenant les principales fonctions permettant d’afficher certaines unités statistiques du jeu de données.</p>
+<pre class="r"><code># Sélection d&#39;une unité statistique (ligne 5)
+iris[5,] </code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 5            5         3.6          1.4         0.2  setosa</code></pre>
+<pre class="r"><code># Sélection de plusieurs groupe d&#39;unités statistiques (exemple : ligne de 5 à 10)
+iris[5:10,]</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<pre class="r"><code># Sélection de plusieurs unités statistiques 
+iris[c(5, 15, 20, 33, 45),]</code></pre>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 5           5.0         3.6          1.4         0.2  setosa
+## 15          5.8         4.0          1.2         0.2  setosa
+## 20          5.1         3.8          1.5         0.3  setosa
+## 33          5.2         4.1          1.5         0.1  setosa
+## 45          5.1         3.8          1.9         0.4  setosa</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="trier-et-extraire-les-variables-avec-la-fonction-subset" class="section level3">
+<h3>Trier et extraire les variables avec la fonction subset()</h3>
+<p>La commande subset() permet d’extraire les données d’un tableau selon ses conditions. Elle permet de trier les variables en fonction de plusieurs critères. Dans le second exemple, nous souhaitons les unités statistiques comprenant les longueurs de pétales supérieures à 7.2 mm, de l’espèce ‘Seposa’</p>
+<pre class="r"><code># Fonction subset()
+subset(iris, iris$Sepal.Length &gt; 7.2)</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 106          7.6         3.0          6.6         2.1 virginica
+## 108          7.3         2.9          6.3         1.8 virginica
+## 118          7.7         3.8          6.7         2.2 virginica
+## 119          7.7         2.6          6.9         2.3 virginica
+## 123          7.7         2.8          6.7         2.0 virginica
+## 131          7.4         2.8          6.1         1.9 virginica
+## 132          7.9         3.8          6.4         2.0 virginica
+## 136          7.7         3.0          6.1         2.3 virginica</code></pre>
+<pre class="r"><code># Autres exemples avec subset()
+subset(iris, iris$Sepal.Length &gt; 7.2, Species = &quot;seposa&quot;)</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 106          7.6         3.0          6.6         2.1 virginica
+## 108          7.3         2.9          6.3         1.8 virginica
+## 118          7.7         3.8          6.7         2.2 virginica
+## 119          7.7         2.6          6.9         2.3 virginica
+## 123          7.7         2.8          6.7         2.0 virginica
+## 131          7.4         2.8          6.1         1.9 virginica
+## 132          7.9         3.8          6.4         2.0 virginica
+## 136          7.7         3.0          6.1         2.3 virginica</code></pre>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="trier-avec-la-fonction-sort" class="section level3">
+<h3>Trier avec la fonction sort()</h3>
+<div id="ordre-croissant-et-décroissant" class="section level4">
+<h4>Ordre croissant et décroissant</h4>
+<pre class="r"><code># Fonction sort()
+sort(iris$Sepal.Length)</code></pre>
+<pre><code>##   [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9
+##  [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1
+##  [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5
+##  [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7
+##  [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1
+##  [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3
+## [109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7
+## [127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4
+## [145] 7.6 7.7 7.7 7.7 7.7 7.9</code></pre>
+<pre class="r"><code># Affichage barplot()
+c &lt;- sort(iris$Sepal.Length)
+barplot(c)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code># Fonction sort() décroissante
+sort(iris$Sepal.Length, decreasing = T)</code></pre>
+<pre><code>##   [1] 7.9 7.7 7.7 7.7 7.7 7.6 7.4 7.3 7.2 7.2 7.2 7.1 7.0 6.9 6.9 6.9 6.9 6.8
+##  [19] 6.8 6.8 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.6 6.6 6.5 6.5 6.5 6.5 6.5 6.4
+##  [37] 6.4 6.4 6.4 6.4 6.4 6.4 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.2 6.2 6.2
+##  [55] 6.2 6.1 6.1 6.1 6.1 6.1 6.1 6.0 6.0 6.0 6.0 6.0 6.0 5.9 5.9 5.9 5.8 5.8
+##  [73] 5.8 5.8 5.8 5.8 5.8 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.7 5.6 5.6 5.6 5.6 5.6
+##  [91] 5.6 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.4 5.4 5.4 5.4 5.4 5.4 5.3 5.2 5.2 5.2
+## [109] 5.2 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0
+## [127] 5.0 5.0 4.9 4.9 4.9 4.9 4.9 4.9 4.8 4.8 4.8 4.8 4.8 4.7 4.7 4.6 4.6 4.6
+## [145] 4.6 4.5 4.4 4.4 4.4 4.3</code></pre>
+<pre class="r"><code>d &lt;- sort(iris$Sepal.Length, decreasing = T)
+
+# Affichage barplot()
+barplot(d)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
+<br>
+<hr>
+<p><br></p>
+</div>
+</div>
+</div>

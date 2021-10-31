@@ -1,0 +1,109 @@
+---
+title: Nuage de points
+author: Franck BERTUZZI
+date: '2021-08-20'
+slug: nuage de points
+categories:
+  - R
+tags:
+  - statistiques descriptives
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T09:55:00+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 2
+---
+
+## Créer un nuage de points | Fonction plot
+La fonction plot est une fonction générique de R. Elle permet de représenter de nombreux types de données, comme les nuages de points. Nous utilisons ici le jeu de données iris fourni avec le logiciel R. La fonction head() permet de visualiser l'entête du jeu de données et les premières lignes.
+
+```{r}
+
+# Création d'un jeu de données appellé data
+data <- iris
+
+# Visualiation partielle du jeu de données
+head(data)
+
+# Fontion plot
+plot(data$Sepal.Length, data$Petal.Length)
+
+```
+
+
+<br>
+<hr>
+<br>
+
+
+### Droite de regression : fonction lm() et abline()
+lm signifie linear model. Voyons ici comment utiliser cette fonction et comment tracer une droite de régression. Nous allons utilisr le jeu de données iris
+
+
+```{r}
+
+# Dataset : iris
+# Fonction plot
+plot(iris$Sepal.Length, iris$Petal.Length)
+
+# Fonction lm()
+regression <-lm(iris$Petal.Length ~ iris$Sepal.Length, data = iris)
+
+# Fonction abline()
+abline(regression)
+
+# Affichage de l'objet "regression"
+print(regression)
+
+```
+<br>
+<hr>
+<br>
+
+### Nuage de points avec ggplot
+ggplot est un package permettant de proposer des fonctionnalités plus avançées et des graphismes plus agréables. Il fonctionne avec un système de calques. Pour cela, assurez vous de télécharger le package ggplot2 via la fonction install.packages(ggplot2), puis de lancer le package via la commande library(ggplot2).
+
+```{r}
+# install.packages(ggplot2)
+# library(ggplot2)
+# dataset : iris
+
+library(ggplot2)
+ggplot(data = iris, mapping = aes(Sepal.Length, Petal.Length)) +
+  geom_point() 
+
+
+
+```
+<br>
+<hr>
+<br>
+
+### Colorer les variables qualitatives
+
+Nous souhaitons maintenant colorer les variables qualitatives afin d'augmenter la clareté et l'interprétation de graphique. Pour cela nous utilisons l'argument "color" et l"assignons à la variable souhaitée.
+
+```{r}
+
+# Dataset : iris
+# Library
+library(ggplot2)
+
+# Visualisation partielle du jeu de données
+head(iris)
+
+# Fonction geom_point + réglage couleur "color"
+ggplot(data = iris) + 
+  geom_point(mapping = aes(x = Sepal.Length, y = Petal.Length, color=Species))
+
+```
+
+
+

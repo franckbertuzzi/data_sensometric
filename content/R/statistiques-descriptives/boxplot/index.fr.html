@@ -1,0 +1,129 @@
+---
+title: Boxplot
+author: ''
+date: '2021-08-20'
+slug: boxplot
+categories:
+  - R
+tags:
+  - Statistiques descriptives
+  - plot
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-20T12:44:02+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 1
+---
+
+<script src="{{< blogdown/postref >}}index.fr_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="les-boxplots" class="section level2">
+<h2>Les boxplots</h2>
+<p>Les boxplots sont des outils de visualisation très pratiques pour observer et comparer des distributions.</p>
+<div id="fonctionnement-dun-boxplot" class="section level3">
+<h3>Fonctionnement d’un boxplot</h3>
+<p><img src="images/boxplot.png" /></p>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="créer-des-boxplots-fonction-boxplot" class="section level3">
+<h3>Créer des boxplots | fonction boxplot()</h3>
+<p>Pour commencer, nous allons créer une série de boxplot avec le jeu de donnée iris.</p>
+<pre class="r"><code># Visualisation partielle du jeu de données
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Fonction boxplot
+boxplot(iris$Sepal.Length, iris$Sepal.Width, iris$Petal.Length, iris$Petal.Width)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="créer-des-boxplots-avec-ggplot" class="section level3">
+<h3>Créer des boxplots avec ggplot()</h3>
+<div id="les-réglages" class="section level4">
+<h4>Les réglages</h4>
+<p>Maintenant, nous allons utiliser ggplot. Cette librairie offre de nombreux réglages et fonctionne avec un système de calques.</p>
+<ul>
+<li><p>aes() permet de définir les aspects esthétiques (x et y principalement, mais aussi color, fill, size, …)</p></li>
+<li><p>geom_xxx() indique la représentation à choisir (xxx étant remplacé par histogram, boxplot, …)</p></li>
+<li><p>stat_xxx() indique les transformations statistiques à utiliser, si besoin</p></li>
+<li><p>scale_xxx() s’emploie pour des changements d’échelle</p></li>
+<li><p>coord_xxx() s’utilise pour des modifications de systèmes de coordonnées</p></li>
+<li><p>facet_grid() découpe les données (et donc le graphique) en plusieurs facettes selon les variables fournie dans la formule</p></li>
+<li><p>theme_xxx(), labs(), xlab(), ylab(), ggtitle(), … pour des améliorations du graphique (annotation, couleurs, …)</p></li>
+</ul>
+<pre class="r"><code># Library(ggplot2)
+library(ggplot2)</code></pre>
+<pre><code>## Warning: le package &#39;ggplot2&#39; a été compilé avec la version R 4.0.5</code></pre>
+<pre class="r"><code># Visualisation partielle du jeu de données
+head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="r"><code># Fonction geom_boxplot + geom_jitter 
+## Réglage couleur avec fill
+ggplot(data=iris, mapping = aes(Sepal.Length, Species, fill = Species)) +
+  geom_boxplot(colour = &quot;blue&quot;) +
+  geom_jitter(colour=&quot;blue&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<br>
+<hr>
+<p><br></p>
+</div>
+</div>
+<div id="séries-de-boxplots-ggplot" class="section level3">
+<h3>Séries de boxplots | ggplot()</h3>
+<p>Cet exemple est tiré d’une étude sensorielle concernant des parfums. Nous souhaitons comparer la distribution des évaluations sensorielles des parfums concernant un attribut : Spicy.
+Nous ajoutons également la fonction jitter permettant d’afficher les valeurs par des points.</p>
+<pre class="r"><code># Library(ggplot2)
+library(ggplot2)
+
+# Data import
+demo_experts=read.csv(file.choose(), sep=&quot;,&quot;,dec=&quot;.&quot;,quote=&quot;\&quot;&quot;, header=TRUE)
+
+# Visualisation partielle du jeu de données
+head(demo_experts)</code></pre>
+<pre><code>##   Panelist Session Rank           Product Spicy Heady Fruity Green Vanilla
+## 1       SO       1    1 Coco Mademoiselle   0.6   0.7    7.1   0.8     2.0
+## 2       SO       1    2   Lolita Lempicka   1.4   1.5    3.2   1.3     5.3
+## 3       SO       1    3             Angel   3.8   9.7    1.0   0.6     1.9
+## 4       SO       1    4       Pure Poison   1.1   1.2    7.4   0.2     2.5
+## 5       SO       1    5         Chanel N5   4.9   8.4    3.0   0.3     0.1
+## 6       SO       1    6  Aromatics Elixir   8.6  10.0    0.0   0.0     3.1
+##   Floral Woody Citrus Marine Greedy Oriental Wrapping
+## 1    8.6   0.7    0.3    3.4    0.8      0.9      3.8
+## 2    4.4   1.1    1.8    1.0    9.5      1.0      7.9
+## 3    3.6   0.6    0.7    0.5    9.8      0.7      7.3
+## 4    9.5   0.8    1.0    0.8    3.8      7.0      8.9
+## 5    4.9   3.3    0.0    0.0    1.9      9.0      9.5
+## 6    5.0   1.2    0.0    0.0    0.0      6.0      8.5</code></pre>
+<pre class="r"><code># Fonction geom_boxplot + geom_jitter
+ggplot(data=demo_experts, mapping = aes(x=Spicy, y=Product)) +
+  geom_boxplot() +
+  geom_jitter(colour=&quot;blue&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index.fr_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<br>
+<hr>
+<p><br></p>
+</div>
+</div>

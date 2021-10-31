@@ -1,0 +1,43 @@
+---
+title: Convertir un mode
+author: Franck BERTUZZI
+date: '2021-08-19'
+slug: convertir-un-mode
+categories:
+  - R
+tags:
+  - R Markdown
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-08-19T21:17:04+02:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+type: book
+weight: 4
+---
+
+<script src="{{< blogdown/postref >}}index.fr_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Il est parfois nécessaire de convertir le mode d’un objet en un autre mode. Nous utilisons la fonction as.factor(). Dans l’exemple ci-dessous, nous souhaitons convertir un mode logical en un mode numeric. Nous allons donc créer un objet en mode logical et le convertir grace à la fonction.</p>
+<hr>
+<div id="fonction-as.factor" class="section level3">
+<h3>Fonction as.factor()</h3>
+<pre class="r"><code>k &lt;- TRUE
+as.numeric(k)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<hr>
+</div>
+<div id="fonction-attributes" class="section level3">
+<h3>Fonction attributes()</h3>
+Le fonction attributes() permet de connaître tous les attributs d’un objet.
+<hr>
+<pre class="r"><code>g &lt;- c(5,8,4,8,5,7,4)
+attributes(g)</code></pre>
+<pre><code>## NULL</code></pre>
+</div>
