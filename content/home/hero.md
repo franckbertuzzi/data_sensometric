@@ -2,7 +2,7 @@
 widget: hero
 headless: true
 weight: 1
-title: Le data blog de Sensometric.com
+title: Le data blog de Sensometric
 hero_media: sensometric-datascience.png
 design:
   background:
