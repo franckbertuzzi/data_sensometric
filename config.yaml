@@ -5,7 +5,7 @@
 
 title: 'Sensometric Data Blog' # Website name
 baseurl: '' # Website URL
-copyright: '2021 - All rights reserved - sensometric.com # Footer text, e.g. '© {year} Me' 
+copyright: '2021 - All rights reserved - sensometric.com' # Footer text, e.g. '© {year} Me' 
 
 ############################
 ## LANGUAGE
